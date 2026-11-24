@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "censvhap"
+dynamic = ["version"]
+description = "Haplogroup resolution of centromeric structural variants on a haplotype neighbor-joining tree"
+readme = "README.md"
+license = {text = "MIT"}
+authors = [{name = "Yikai Dong"}]
+requires-python = ">=3.10"
+dependencies = [
+    "numpy>=1.24",
+    "pandas>=2.0",
+    "scipy>=1.10",
+    "scikit-bio>=0.6",
+    "cyvcf2>=0.30",
+]
+
+[project.optional-dependencies]
+test = ["pytest>=7"]
+
+[project.scripts]
+censvhap = "censvhap.cli:main"
+
+[tool.setuptools.dynamic]
+version = {attr = "censvhap.__version__"}
+
+[tool.setuptools.packages.find]
+include = ["censvhap*"]
